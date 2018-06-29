@@ -8,9 +8,14 @@
         </td>
         <td>
             {{ pp.power_outlet }}
+	</td>
+	<td>
+            {% if pp.connection_comments %}
+               Cable ID: {{ pp.connection_comments }}
+            {% endif %}
         </td>
     {% else %}
-        <td colspan="2">
+        <td colspan="3">
             <span class="text-muted">Not connected</span>
         </td>
     {% endif %}

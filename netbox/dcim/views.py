@@ -1145,6 +1145,7 @@ class ConsolePortDisconnectView(PermissionRequiredMixin, View):
             cs_port = consoleport.cs_port
             consoleport.cs_port = None
             consoleport.connection_status = None
+            consoleport.connection_comments = None
             consoleport.save()
             msg = 'Disconnected <a href="{}">{}</a> {} from <a href="{}">{}</a> {}'.format(
                 consoleport.device.get_absolute_url(),
@@ -1286,6 +1287,7 @@ class ConsoleServerPortDisconnectView(PermissionRequiredMixin, View):
             consoleport = consoleserverport.connected_console
             consoleport.cs_port = None
             consoleport.connection_status = None
+            consoleport.connection_comments = None
             consoleport.save()
             msg = 'Disconnected <a href="{}">{}</a> {} from <a href="{}">{}</a> {}'.format(
                 consoleport.device.get_absolute_url(),
@@ -1431,6 +1433,7 @@ class PowerPortDisconnectView(PermissionRequiredMixin, View):
             power_outlet = powerport.power_outlet
             powerport.power_outlet = None
             powerport.connection_status = None
+            powerport.connection_comments = None
             powerport.save()
             msg = 'Disconnected <a href="{}">{}</a> {} from <a href="{}">{}</a> {}'.format(
                 powerport.device.get_absolute_url(),
@@ -1570,6 +1573,7 @@ class PowerOutletDisconnectView(PermissionRequiredMixin, View):
             powerport = poweroutlet.connected_port
             powerport.power_outlet = None
             powerport.connection_status = None
+            powerport.connection_comments = None
             powerport.save()
             msg = 'Disconnected <a href="{}">{}</a> {} from <a href="{}">{}</a> {}'.format(
                 powerport.device.get_absolute_url(),

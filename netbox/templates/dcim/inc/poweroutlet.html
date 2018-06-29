@@ -13,6 +13,9 @@
         </td>
         <td>
             {{ po.connected_port }}
+            {% if po.connected_port.connection_comments %}
+            Cable ID: {{ po.connected_port.connection_comments }}
+            {% endif %}
         </td>
     {% else %}
         <td colspan="2">

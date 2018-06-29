@@ -49,10 +49,15 @@
             <td>
                 <span title="{{ connected_iface.get_form_factor_display }}">{{ connected_iface }}</span>
             </td>
+            <td>
+			{% if iface.connection.connection_comments %}
+			    Cable ID: {{ iface.connection.connection_comments }}
+			{% endif %}
+            </td>
         {% endwith %}
     {% elif iface.circuit_termination %}
         {% with iface.circuit_termination.get_peer_termination as peer_termination %}
-            <td colspan="2">
+            <td colspan="3">
                 <i class="fa fa-fw fa-globe" title="Circuit"></i>
                 {% if peer_termination %}
                     {% if peer_termination.interface %}
@@ -67,7 +72,7 @@
             </td>
         {% endwith %}
     {% else %}
-        <td colspan="2">
+        <td colspan="3">
             <span class="text-muted">Not connected</span>
         </td>
     {% endif %}

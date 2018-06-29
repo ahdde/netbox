@@ -1173,8 +1173,9 @@ class ConsolePort(models.Model):
     cs_port = models.OneToOneField('ConsoleServerPort', related_name='connected_console', on_delete=models.SET_NULL,
                                    verbose_name='Console server port', blank=True, null=True)
     connection_status = models.NullBooleanField(choices=CONNECTION_STATUS_CHOICES, default=CONNECTION_STATUS_CONNECTED)
+    connection_comments = models.TextField(blank=True)
 
-    csv_headers = ['console_server', 'cs_port', 'device', 'console_port', 'connection_status']
+    csv_headers = ['console_server', 'cs_port', 'device', 'console_port', 'connection_comments']
 
     class Meta:
         ordering = ['device', 'name']
@@ -1255,8 +1256,8 @@ class PowerPort(models.Model):
     power_outlet = models.OneToOneField('PowerOutlet', related_name='connected_port', on_delete=models.SET_NULL,
                                         blank=True, null=True)
     connection_status = models.NullBooleanField(choices=CONNECTION_STATUS_CHOICES, default=CONNECTION_STATUS_CONNECTED)
-
-    csv_headers = ['pdu', 'power_outlet', 'device', 'power_port', 'connection_status']
+    connection_comments = models.TextField(blank=True)
+    csv_headers = ['pdu', 'power_outlet', 'device', 'power_port', 'connection_status', 'connection_comments']
 
     class Meta:
         ordering = ['device', 'name']
@@ -1525,10 +1526,11 @@ class InterfaceConnection(models.Model):
     """
     interface_a = models.OneToOneField('Interface', related_name='connected_as_a', on_delete=models.CASCADE)
     interface_b = models.OneToOneField('Interface', related_name='connected_as_b', on_delete=models.CASCADE)
+    connection_comments = models.TextField(blank=True)
     connection_status = models.BooleanField(choices=CONNECTION_STATUS_CHOICES, default=CONNECTION_STATUS_CONNECTED,
                                             verbose_name='Status')
 
-    csv_headers = ['device_a', 'interface_a', 'device_b', 'interface_b', 'connection_status']
+    csv_headers = ['device_a', 'interface_a', 'device_b', 'interface_b', 'connection_status', 'connection_comments']
 
     def clean(self):
         try:

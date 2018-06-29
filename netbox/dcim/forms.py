@@ -1300,10 +1300,11 @@ class ConsolePortConnectionForm(BootstrapMixin, ChainedFieldsMixin, forms.ModelF
             disabled_indicator='connected_console',
         )
     )
+    connection_comments = forms.CharField(max_length=100, required=False, label='Cable ID')
 
     class Meta:
         model = ConsolePort
-        fields = ['site', 'rack', 'console_server', 'livesearch', 'cs_port', 'connection_status']
+        fields = ['site', 'rack', 'console_server', 'livesearch', 'cs_port', 'connection_status', 'connection_comments']
         labels = {
             'cs_port': 'Port',
             'connection_status': 'Status',
@@ -1565,13 +1566,15 @@ class PowerPortConnectionForm(BootstrapMixin, ChainedFieldsMixin, forms.ModelFor
             disabled_indicator='connected_port'
         )
     )
+    connection_comments = forms.CharField(max_length=100, required=False, label='Cable ID')
 
     class Meta:
         model = PowerPort
-        fields = ['site', 'rack', 'pdu', 'livesearch', 'power_outlet', 'connection_status']
+        fields = ['site', 'rack', 'pdu', 'livesearch', 'power_outlet', 'connection_status', 'connection_comments']
         labels = {
             'power_outlet': 'Outlet',
             'connection_status': 'Status',
+            'connection_comments': 'Cable-ID'
         }
 
     def __init__(self, *args, **kwargs):
@@ -1888,6 +1891,7 @@ class InterfaceBulkDisconnectForm(ConfirmationForm):
 #
 
 class InterfaceConnectionForm(BootstrapMixin, ChainedFieldsMixin, forms.ModelForm):
+    connection_comments = forms.CharField(max_length=100, required=False, label='Cable ID')
     interface_a = forms.ChoiceField(
         choices=[],
         widget=SelectWithDisabled,
@@ -1952,7 +1956,7 @@ class InterfaceConnectionForm(BootstrapMixin, ChainedFieldsMixin, forms.ModelFor
 
     class Meta:
         model = InterfaceConnection
-        fields = ['interface_a', 'site_b', 'rack_b', 'device_b', 'interface_b', 'livesearch', 'connection_status']
+        fields = ['interface_a', 'site_b', 'rack_b', 'device_b', 'interface_b', 'livesearch', 'connection_status', 'connection_comments']
 
     def __init__(self, device_a, *args, **kwargs):
 
