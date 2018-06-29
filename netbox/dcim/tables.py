@@ -567,10 +567,11 @@ class ConsoleConnectionTable(BaseTable):
     cs_port = tables.Column(verbose_name='Port')
     device = tables.LinkColumn('dcim:device', args=[Accessor('device.pk')], verbose_name='Device')
     name = tables.Column(verbose_name='Console port')
+    connection_comments = tables.Column(verbose_name='Cable ID')
 
     class Meta(BaseTable.Meta):
         model = ConsolePort
-        fields = ('console_server', 'cs_port', 'device', 'name')
+        fields = ('console_server', 'cs_port', 'device', 'name', 'connection_comments')
 
 
 class PowerConnectionTable(BaseTable):
@@ -579,10 +580,11 @@ class PowerConnectionTable(BaseTable):
     power_outlet = tables.Column(verbose_name='Outlet')
     device = tables.LinkColumn('dcim:device', args=[Accessor('device.pk')], verbose_name='Device')
     name = tables.Column(verbose_name='Power Port')
+    connection_comments = tables.Column(verbose_name='Cable ID')
 
     class Meta(BaseTable.Meta):
         model = PowerPort
-        fields = ('pdu', 'power_outlet', 'device', 'name')
+        fields = ('pdu', 'power_outlet', 'device', 'name', 'connection_comments')
 
 
 class InterfaceConnectionTable(BaseTable):
@@ -592,10 +594,11 @@ class InterfaceConnectionTable(BaseTable):
     device_b = tables.LinkColumn('dcim:device', accessor=Accessor('interface_b.device'),
                                  args=[Accessor('interface_b.device.pk')], verbose_name='Device B')
     interface_b = tables.Column(verbose_name='Interface B')
+    connection_comments = tables.Column(verbose_name='Cable ID')
 
     class Meta(BaseTable.Meta):
         model = Interface
-        fields = ('device_a', 'interface_a', 'device_b', 'interface_b')
+        fields = ('device_a', 'interface_a', 'device_b', 'interface_b', 'connection_comments')
 
 
 #
