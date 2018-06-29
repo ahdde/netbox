@@ -1308,6 +1308,7 @@ class ConsolePortConnectionForm(BootstrapMixin, ChainedFieldsMixin, forms.ModelF
         labels = {
             'cs_port': 'Port',
             'connection_status': 'Status',
+            'connection_comments': 'Cable ID',
         }
 
     def __init__(self, *args, **kwargs):
@@ -1574,7 +1575,7 @@ class PowerPortConnectionForm(BootstrapMixin, ChainedFieldsMixin, forms.ModelFor
         labels = {
             'power_outlet': 'Outlet',
             'connection_status': 'Status',
-            'connection_comments': 'Cable ID'
+            'connection_comments': 'Cable ID',
         }
 
     def __init__(self, *args, **kwargs):
