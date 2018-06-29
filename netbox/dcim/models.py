@@ -1175,7 +1175,7 @@ class ConsolePort(models.Model):
     connection_status = models.NullBooleanField(choices=CONNECTION_STATUS_CHOICES, default=CONNECTION_STATUS_CONNECTED)
     connection_comments = models.TextField(blank=True)
 
-    csv_headers = ['console_server', 'cs_port', 'device', 'console_port', 'connection_comments']
+    csv_headers = ['console_server', 'cs_port', 'device', 'console_port', 'connection_status', 'connection_comments']
 
     class Meta:
         ordering = ['device', 'name']

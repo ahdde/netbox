@@ -14,11 +14,11 @@
         <td>
             {{ csp.connected_console }}
         </td>
-	<td>
+        <td>
             {% if csp.connected_console.connection_comments %}
             Cable ID: {{ csp.connected_console.connection_comments }}
             {% endif %}
-	</td>
+        </td>
     {% else %}
         <td colspan="3">
             <span class="text-muted">Not connected</span>
